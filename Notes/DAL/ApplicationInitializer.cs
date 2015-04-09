@@ -7,7 +7,7 @@ using System.Data.Entity;
 
 namespace Notes.DAL
 {
-    public class ApplicationInitializer : DropCreateDatabaseAlways<ApplicationContext>
+    public class ApplicationInitializer : DropCreateDatabaseIfModelChanges<ApplicationContext>
     {
         protected override void Seed(ApplicationContext context)
         {
@@ -24,9 +24,9 @@ namespace Notes.DAL
 
             var notes = new List<Note>
             {
-                new Note{Id = 0, Text = "Note in group First", DirectoryId=1},
-                new Note{Id = 1, Text= "Another note in group First", DirectoryId=1},
-                new Note{Id = 2, Text= "Note in group Second", DirectoryId=2}
+                new Note{Id = 0, Text = "Note in group Second", DirectoryId=1},
+                new Note{Id = 1, Text= "Another note in group Second", DirectoryId=1},
+                new Note{Id = 2, Text= "Note in group Third", DirectoryId=2}
 
             };
 
