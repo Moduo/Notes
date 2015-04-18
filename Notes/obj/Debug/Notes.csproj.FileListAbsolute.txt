@@ -52,3 +52,4 @@ E:\dev\Notes\Notes\bin\Microsoft.Owin.Security.Twitter.xml
 E:\dev\Notes\Notes\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 E:\dev\Notes\Notes\obj\Debug\Notes.dll
 E:\dev\Notes\Notes\obj\Debug\Notes.pdb
+E:\dev\Notes\Notes\obj\Debug\Notes.csprojResolveAssemblyReference.cache

@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Notes.Models;
 using Notes.DAL;
+using Newtonsoft.Json;
 
 namespace Notes.Controllers
 {
@@ -18,8 +19,7 @@ namespace Notes.Controllers
         // GET: /Directory/
         public ActionResult Index()
         {
-            var directories = db.Directories.Include(d => d.Parent);
-            return View(directories.ToList());
+            return View();
         }
 
         // GET: /Directory/Details/5
@@ -49,7 +49,7 @@ namespace Notes.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="Id,Name,ParentId")] Directory directory)
+        public ActionResult Create([Bind(Include = "Id,Name,ParentId")] Directory directory)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +83,7 @@ namespace Notes.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="Id,Name,ParentId")] Directory directory)
+        public ActionResult Edit([Bind(Include = "Id,Name,ParentId")] Directory directory)
         {
             if (ModelState.IsValid)
             {
@@ -128,6 +128,17 @@ namespace Notes.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public string GetDirectories()
+        {
+            var directories = db.Directories.Where(d => d.ParentId.Equals(0)).ToList();
+
+            return JsonConvert.SerializeObject(new { directorylist = directories }, Formatting.Indented,
+                            new JsonSerializerSettings
+                            {
+                                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                            });
         }
     }
 }

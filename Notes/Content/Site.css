@@ -66,3 +66,14 @@ input[type="checkbox"].input-validation-error {
     text-overflow: ellipsis;
     border-radius: 3px;
 }
+.action-bar{
+    
+    border:1px solid #999;
+    padding:7px;
+}
+.action-bar .form-group{
+    margin-bottom:0;
+}
+.action-bar .btn{
+    margin-left:15px;
+}

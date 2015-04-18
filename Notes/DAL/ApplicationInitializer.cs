@@ -13,10 +13,10 @@ namespace Notes.DAL
         {
             var directories = new List<Directory>
             {
-                new Directory{Id = 0, Name="First"},
-                new Directory{Id = 1, Name="Second"},
-                new Directory{Id = 2, Name="Third"},
-                new Directory{Id = 3, Name="Fourth"}
+                new Directory{Id = 0, Name="First", ParentId = 0},
+                new Directory{Id = 1, Name="Second", ParentId = 0},
+                new Directory{Id = 2, Name="Third", ParentId = 1},
+                new Directory{Id = 3, Name="Fourth", ParentId = 2}
             };
 
             directories.ForEach(g => context.Directories.Add(g));

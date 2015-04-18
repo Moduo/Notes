@@ -1,30 +1,16 @@
-﻿@model IEnumerable<Notes.Models.Directory>
-
-@{
+﻿@{
     ViewBag.Title = "Index";
 }
 
+@Html.Partial("_ActionBar")
 
-
-@foreach (var item in Model)
-{
-    <div class="directory-wrapper col-md-2">
+<div class="items" ng-controller="DirectoryController as controller">
+    <div class="directory-wrapper col-md-2" ng-repeat="directory in controller.directories.directorylist">
         <div class="directory box">
             <span class="fa fa-folder"></span>
             <span class="directory-name">
-                @Html.DisplayFor(modelItem => item.Name)
+                {{directory.Name}}
             </span>
         </div>
     </div>
-}
-@foreach (var item in Model)
-{
-    <div class="directory-wrapper col-md-2">
-        <div class="directory box">
-            <span class="fa fa-folder"></span>
-            <span class="directory-name">
-                @Html.DisplayFor(modelItem => item.Name)
-            </span>
-        </div>
-    </div>
-}
+</div>
