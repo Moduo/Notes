@@ -6,7 +6,7 @@
 
 <div class="items" ng-controller="DirectoryController as controller">
     <div class="directory-wrapper col-md-2" ng-repeat="directory in controller.directories.directorylist">
-        <div class="directory box">
+        <div class="directory box" ng-click="changeDir(directory.Id)">
             <span class="fa fa-folder"></span>
             <span class="directory-name">
                 {{directory.Name}}

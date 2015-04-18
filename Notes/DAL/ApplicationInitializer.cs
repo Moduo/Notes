@@ -7,16 +7,21 @@ using System.Data.Entity;
 
 namespace Notes.DAL
 {
-    public class ApplicationInitializer : DropCreateDatabaseIfModelChanges<ApplicationContext>
+    public class ApplicationInitializer : DropCreateDatabaseAlways<ApplicationContext>
     {
         protected override void Seed(ApplicationContext context)
         {
             var directories = new List<Directory>
             {
-                new Directory{Id = 0, Name="First", ParentId = 0},
+                new Directory{Id = 0, Name="Root", ParentId = 0},
                 new Directory{Id = 1, Name="Second", ParentId = 0},
-                new Directory{Id = 2, Name="Third", ParentId = 1},
-                new Directory{Id = 3, Name="Fourth", ParentId = 2}
+                new Directory{Id = 2, Name="Third", ParentId = 0},
+                new Directory{Id = 3, Name="Fourth", ParentId = 0},
+                new Directory{Id = 4, Name="Fifth", ParentId = 1},
+                new Directory{Id = 5, Name="Sixth", ParentId = 1},
+                new Directory{Id = 6, Name="Seventh", ParentId = 2},
+                new Directory{Id = 7, Name="Eighth", ParentId = 5},
+                new Directory{Id = 8, Name="Nineth", ParentId = 5}
             };
 
             directories.ForEach(g => context.Directories.Add(g));

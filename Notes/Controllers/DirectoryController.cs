@@ -130,9 +130,9 @@ namespace Notes.Controllers
             base.Dispose(disposing);
         }
 
-        public string GetDirectories()
+        public string GetDirectories(int id = 0)
         {
-            var directories = db.Directories.Where(d => d.ParentId.Equals(0)).ToList();
+            var directories = db.Directories.Where(d => d.ParentId.Equals(id)).Where(d => !d.Id.Equals(0)).ToList();
 
             return JsonConvert.SerializeObject(new { directorylist = directories }, Formatting.Indented,
                             new JsonSerializerSettings
