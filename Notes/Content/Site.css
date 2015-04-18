@@ -77,3 +77,8 @@ input[type="checkbox"].input-validation-error {
 .action-bar .btn{
     margin-left:15px;
 }
+.action-bar .directory-up{
+    padding:5px 10px;
+    font-size:20px;
+    cursor:pointer;
+}

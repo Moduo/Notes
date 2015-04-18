@@ -134,7 +134,19 @@ namespace Notes.Controllers
         {
             var directories = db.Directories.Where(d => d.ParentId.Equals(id)).Where(d => !d.Id.Equals(0)).ToList();
 
-            return JsonConvert.SerializeObject(new { directorylist = directories }, Formatting.Indented,
+            return JsonConvert.SerializeObject(new { parentId = id, directorylist = directories }, Formatting.Indented,
+                            new JsonSerializerSettings
+                            {
+                                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                            });
+        }
+
+        public string GoTo(int id = 0)
+        {
+            var directory = db.Directories.Find(id);
+            var directories = db.Directories.Where(d => d.ParentId.Equals(directory.ParentId)).Where(d => !d.Id.Equals(0)).ToList();
+
+            return JsonConvert.SerializeObject(new {parentId = directory.ParentId, directorylist = directories }, Formatting.Indented,
                             new JsonSerializerSettings
                             {
                                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore

@@ -22,6 +22,17 @@
                 });
         };
 
+        $scope.goUpOneDir = function (id) {
+            $http.get('/Directory/GoTo/' + id).
+                success(function (data, status, headers, config) {
+                    cont.directories = data;
+                }).
+                error(function (data, status, headers, config) {
+                });
+        }
+
     }]);
+
+    $('[data-toggle="tooltip"]').tooltip()
 
 })();

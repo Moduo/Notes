@@ -7,7 +7,7 @@ using System.Data.Entity;
 
 namespace Notes.DAL
 {
-    public class ApplicationInitializer : DropCreateDatabaseAlways<ApplicationContext>
+    public class ApplicationInitializer : DropCreateDatabaseIfModelChanges<ApplicationContext>
     {
         protected override void Seed(ApplicationContext context)
         {
