@@ -1,10 +1,10 @@
 ﻿<div class="action-bar">
     <div class="container">
-        <span class="fa fa-arrow-up pull-left directory-up" title="Go up one directory" ng-click="goUpOneDir(controller.directories.parentId)"></span>
-        <form class="form-horizontal">
+        <span class="fa fa-arrow-up pull-left directory-up" title="Go up one directory" ng-click="goUpOneDir(directories.parentId)"></span>
+        <form class="form-horizontal" ng-submit="dirCtrl.addDirectory(dirCtrl.directories)">
             <div class="form-group">
-                <input type="text" class="col-md-4 form-control" placeholder="Mapnaam" />
-                <button class="btn" style="float:left;"><span class="fa fa-plus"></span> Nieuwe map</button>
+                <input type="text" class="col-md-4 form-control" placeholder="Mapnaam" ng-model="dirCtrl.directory.Name" />
+                <button class="btn add-dir-btn" style="float:left;" disabled><span class="fa fa-plus"></span> Nieuwe map</button>
             </div>
         </form>
     </div>

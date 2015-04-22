@@ -57,7 +57,13 @@ input[type="checkbox"].input-validation-error {
 
 .directory-name {
 }
-
+.directory-new{
+    display:none;
+    
+}
+.directory-new .directory{
+    background-color:#e5e5e5;
+}
 .box {
     background-color: #fff;
     -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .23);

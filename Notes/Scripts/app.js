@@ -5,6 +5,9 @@
         var cont = this;
         cont.directories = [];
 
+        //For new directories
+        this.directory = {};
+
         $http.get('/Directory/GetDirectories').
           success(function (data, status, headers, config) {
               cont.directories = data;
@@ -31,6 +34,21 @@
                 });
         }
 
+        this.addDirectory = function (directories) {
+            console.log(directories);
+            directories.directorylist.push(this.directory);
+            var res = $http.post("/Directory/Create", this.directory);
+            res.success(function (data, status, headers, config) {
+                $scope.message = data;
+            });
+            res.error(function (data, status, headers, config) {
+                alert("failure message: " + JSON.stringify({ data: data }));
+            });
+
+            $('.directory-new').hide();
+            $('.add-dir-btn').prop('disabled', true);
+            this.directory = {};
+        }
     }]);
 
     $('[data-toggle="tooltip"]').tooltip()
